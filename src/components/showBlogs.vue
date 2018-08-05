@@ -5,7 +5,9 @@
     <div v-for="blog in filteredBlogs"
       :key="blog.id"
       class="single-blog">
-      <h2 v-rainbow>{{blog.title | to-uppercase}}</h2>
+      <router-link :to="'blog/' + blog.id">
+        <h2>{{blog.title | to-uppercase}}</h2>
+      </router-link>
       <article>{{blog.body | snippet}}</article>
     </div>
   </div>
@@ -41,10 +43,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #show-blogs {
   max-width: 800px;
   margin: 0 auto;
+}
+#show-blogs h2{
+  cursor: pointer;
 }
 .single-blog{
   padding: 20px;
